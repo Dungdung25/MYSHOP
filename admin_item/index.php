@@ -39,16 +39,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             <tbody>
                 <?php foreach ($items as $item): ?>
                 <tr>
-                <td><a class="btn btn-outline-primary" href="edit.php?id=<?= $item['id'] ?>">Edit</a></td>
+                    <td><a class="btn btn-outline-primary" href="edit.php?id=<?= $item['id'] ?>">Edit</a></td>
                     <td><?= $item['code'] ?></td>
-                    <td><?=$item['code'] ?></td>
-                    <td><?=$item['name'] ?></td>
-                    <td><?=$item['price'] ?></td>
-                    <td><?=$item['stock'] ?></td>
-                    <td><?=$item['updated_at'] ?></td>
+                    <td><?= $item['name'] ?></td>
+                    <td><?= $item['price'] ?></td>
+                    <td><?= $item['stock'] ?></td>
+                    <td><?= $item['updated_at'] ?></td>
                 </tr>
-                
-                
                 <?php endforeach ?>
             </tbody>
         </table>

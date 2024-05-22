@@ -2,6 +2,7 @@
 // データベースに接続
 require_once '../db.php';
 
+// 商品IDを取得
 $item_id = $_GET['id'];
 
 // 商品データを指定したidで取得SQL
@@ -11,6 +12,7 @@ $sql = "SELECT * FROM items WHERE id = {$item_id};";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
+// データ取得
 $item = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
@@ -28,6 +30,8 @@ $item = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="container">
         <h2 class="h2">商品編集</h2>
         <form action="update.php" method="post">
+            <input type="hidden" name="id" value="<?= $item['id'] ?>">
+
             <div class="mb-3 form-floating">
                 <input id="code" type="text" class="form-control" name="code" value="<?= @$item['code'] ?>">
                 <label for="code">商品コード</label>
@@ -51,6 +55,14 @@ $item = $stmt->fetch(PDO::FETCH_ASSOC);
             <button class="btn btn-primary">更新</button>
             <a class="btn btn-outline-primary" href="./">戻る</a>
         </form>
+
+        <div class="mt-4">
+            <form action="delete.php" method="post">
+                <!-- 削除する商品IDを送信(hidden) -->
+                <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                <button class="btn btn-danger">削除</button>
+            </form>
+        </div>
     </div>
 </body>
 

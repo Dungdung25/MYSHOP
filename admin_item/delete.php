@@ -21,4 +21,3 @@ if (isset($_POST['id'])) {
     // 一覧画面にリダイレクトする
     header('Location: ./');
 }
-
